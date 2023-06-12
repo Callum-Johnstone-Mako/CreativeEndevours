@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import Two from 'two.js'
 import { useNavigate } from 'react-router-dom'
+import { Text, VStack } from '@chakra-ui/react'
 
-function TwoExample() {
+function Example1() {
   const ref = useRef()
   const navigate = useNavigate()
 
@@ -79,7 +80,19 @@ function TwoExample() {
     })
   }, [navigate])
 
-  return <div ref={ref} />
+  return (
+    <VStack
+      spacing={8}
+      align="center"
+      justify="center"
+      h="100vh"
+      id="info-text"
+    >
+      <Text fontSize="3xl">Click to begin</Text>
+      <Text fontSize="3xl">Right click to go home</Text>
+      <div ref={ref} />
+    </VStack>
+  )
 }
 
-export default TwoExample
+export default Example1

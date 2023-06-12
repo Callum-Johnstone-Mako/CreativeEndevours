@@ -1,38 +1,45 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from 'react-router-dom'
-import NavBar from './NavBar' // Make sure to import the NavBar component
-import TwoExample from './TwoExample'
+import { ChakraProvider } from '@chakra-ui/react'
+import { VStack, Heading, Text, Button } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Example1 from './Example1'
 
 function App() {
   return (
-    <Router>
-      <div>
-        <AppContent />
-      </div>
-    </Router>
+    <ChakraProvider>
+      <Router>
+        <div>
+          <AppContent />
+        </div>
+      </Router>
+    </ChakraProvider>
   )
 }
 
 function AppContent() {
-  const location = useLocation()
   return (
     <>
-      {location.pathname !== '/draw' && <NavBar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/draw" element={<TwoExample />} />
+        <Route path="/Example1" element={<Example1 />} />
       </Routes>
     </>
   )
 }
 
 function Home() {
-  return <h2>Home</h2>
+  return (
+    <VStack spacing={8} align="center" m={8}>
+      <Heading as="h1" size="2xl">
+        Welcome to the Two.js Fun Zone
+      </Heading>
+      <Text fontSize="xl">Enjoy these examples of two.JS</Text>
+      <Button colorScheme="teal" size="lg" as={Link} to="/Example1">
+        Example_1
+      </Button>
+    </VStack>
+  )
 }
 
 export default App
