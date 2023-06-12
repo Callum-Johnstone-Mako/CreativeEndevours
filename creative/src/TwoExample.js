@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import Two from 'two.js'
+import { useNavigate } from 'react-router-dom'
 
 function TwoExample() {
   const ref = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const two = new Two({
@@ -11,7 +13,7 @@ function TwoExample() {
     }).appendTo(ref.current)
 
     let clickPosition = new Two.Vector(two.width / 2, two.height / 2)
-    const colors = ['green', 'black', 'red', 'blue', 'yellow', 'white']
+    const colors = ['green', 'black', 'red', 'blue', 'yellow']
 
     // Flag indicating whether the user has clicked
     let hasUserClicked = false
@@ -43,7 +45,12 @@ function TwoExample() {
           clickPosition.y
         )
         line.stroke = colors[Math.floor(Math.random() * colors.length)]
-        line.linewidth = 1
+        line.linewidth = 3
+
+        // After 20 seconds remove the line from the scene
+        setTimeout(() => {
+          two.remove(line)
+        }, 30000)
       }
     }, 0.1)
 
@@ -65,7 +72,12 @@ function TwoExample() {
       },
       false
     )
-  }, [])
+
+    two.renderer.domElement.addEventListener('contextmenu', function (e) {
+      e.preventDefault()
+      navigate('/') // Go back to home page on right click
+    })
+  }, [navigate])
 
   return <div ref={ref} />
 }
