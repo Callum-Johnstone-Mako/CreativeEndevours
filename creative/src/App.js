@@ -4,6 +4,7 @@ import { VStack, Heading, Text, Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Example1 from './Example1'
+import Example2 from './Example2'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Example1" element={<Example1 />} />
+        <Route path="/Example2" element={<Example2 />} />
       </Routes>
     </>
   )
@@ -37,6 +39,9 @@ function Home() {
       <Text fontSize="xl">Enjoy these examples of two.JS</Text>
       <Button colorScheme="teal" size="lg" as={Link} to="/Example1">
         Example_1
+      </Button>
+      <Button colorScheme="teal" size="lg" as={Link} to="/Example2">
+        Example_2
       </Button>
     </VStack>
   )
