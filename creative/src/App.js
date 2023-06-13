@@ -1,10 +1,12 @@
 import React from 'react'
+import './App.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { VStack, Heading, Text, Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Example1 from './Example1'
 import Example2 from './Example2'
+import Example3 from './Example3'
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/Example1" element={<Example1 />} />
         <Route path="/Example2" element={<Example2 />} />
+        <Route path="/Example3" element={<Example3 />} />
       </Routes>
     </>
   )
@@ -42,6 +45,9 @@ function Home() {
       </Button>
       <Button colorScheme="teal" size="lg" as={Link} to="/Example2">
         Example_2
+      </Button>
+      <Button colorScheme="teal" size="lg" as={Link} to="/Example3">
+        Example3
       </Button>
     </VStack>
   )
